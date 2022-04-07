@@ -5,6 +5,8 @@ import { GLTFLoader } from "https://unpkg.com/three@0.139.2/examples/jsm/loaders
 import { RGBELoader } from "https://unpkg.com/three@0.139.2/examples/jsm/loaders/RGBELoader.js";
 import { DRACOLoader } from "https://unpkg.com/three@0.139.2/examples/jsm/loaders/DRACOLoader.js";
 
+import Stats from "https://unpkg.com/three@0.139.2/examples/jsm/libs/stats.module";
+
 var scene = new THREE.Scene();
 var camera = new THREE.PerspectiveCamera(
   50,
@@ -53,25 +55,6 @@ const helper = new THREE.DirectionalLightHelper(light, 5);
 
 scene.add(light);
 
-//TEST
-// const geometry = new THREE.BoxGeometry();
-// const material = new THREE.MeshStandardMaterial({ color: 0x00ff00 });
-
-// material.side = THREE.DoubleSide;
-// const cube = new THREE.Mesh(geometry, material);
-// cube.position.set(0, 5, 5);
-// const plane = new THREE.PlaneGeometry(5, 5);
-
-// const planeMesh = new THREE.Mesh(plane, material);
-// planeMesh.rotation.set(Math.PI / 2, 0, 0);
-// planeMesh.position.set(0, 5, 5);
-
-// planeMesh.castShadow = true;
-// planeMesh.receiveShadow = true;
-
-// cube.castShadow = true;
-// scene.add(planeMesh, cube);
-
 //SET HDRI
 new RGBELoader()
   .setPath("./assets/")
@@ -103,10 +86,15 @@ loader.load("app-3d-st_draco.glb", function (gltf) {
   render();
 });
 
+//STATS
+const stats = Stats();
+document.body.appendChild(stats.dom);
+
 function animate() {
   requestAnimationFrame(animate);
   controls.update();
   render();
+  stats.update();
 }
 
 function render() {
