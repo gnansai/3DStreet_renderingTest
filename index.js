@@ -43,8 +43,8 @@ light.shadow.camera.bottom = -100;
 light.shadow.bias = -0.0005;
 
 light.castShadow = true;
-light.shadow.mapSize.width = 512 * 16; // default
-light.shadow.mapSize.height = 512 * 16; // default
+light.shadow.mapSize.width = 512 * 8; // default
+light.shadow.mapSize.height = 512 * 8; // default
 light.shadow.camera.near = 0.5; // default
 light.shadow.camera.far = 500;
 const helper = new THREE.DirectionalLightHelper(light, 5);
