@@ -50,8 +50,8 @@ light.shadow.mapSize.height = 512 * 8; // default
 light.shadow.camera.near = 0.5; // default
 light.shadow.camera.far = 500;
 const helper = new THREE.DirectionalLightHelper(light, 5);
-//scene.add(helper);
-//scene.add(new THREE.CameraHelper(light.shadow.camera));
+scene.add(helper);
+scene.add(new THREE.CameraHelper(light.shadow.camera));
 
 scene.add(light);
 
@@ -60,8 +60,6 @@ new RGBELoader()
   .setPath("./assets/")
   .load("venice_sunset_1k.hdr", function (texture) {
     texture.mapping = THREE.EquirectangularReflectionMapping;
-
-    //scene.background = texture;
     scene.environment = texture;
 
     render();
